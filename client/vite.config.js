@@ -6,8 +6,12 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-    // eslint-disable-next-line no-undef
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    port: process.env.PORT || 3000,  // Bind to Render's port or default to 3000
+    host: '0.0.0.0'  // Bind to all network interfaces
+  },
 })
+
