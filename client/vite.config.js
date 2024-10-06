@@ -10,6 +10,11 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  ,
+  server: {
+    host: '0.0.0.0', // Allow external access
+    port: process.env.PORT ? parseInt(process.env.PORT) : 5173 // Use PORT from the environment
+  },
   build: {
     rollupOptions: {
       output: {
