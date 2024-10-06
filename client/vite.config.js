@@ -6,12 +6,22 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+    // eslint-disable-next-line no-undef
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  server: {
-    port: process.env.PORT || 3000,  // Bind to Render's port or default to 3000
-    host: '0.0.0.0'  // Bind to all network interfaces
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return id.toString().split('node_modules/')[1].split('/')[0].toString();
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,  // Increase the chunk size limit
   },
 })
+
 
