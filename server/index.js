@@ -23,7 +23,7 @@ const port = process.env.PORT || 3001;
 const databaseURL = process.env.DATABASE_URL;
 
 app.use(cors({
-        origin: [process.env.ORIGIN],"https://chatingapp-bz9m.onrender.com",
+        origin: [process.env.ORIGIN],
         methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
         credentials: true,// for enabling cookies to work properly
     }));
